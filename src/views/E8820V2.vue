@@ -1,6 +1,12 @@
 <template>
   <div class="page">
     <input type="file" @change="calc" />
+    <ul>
+      <li>
+        点击按钮选择E8820V2的编程器文件，会自动生成并下载eeprom
+      </li>
+      <li>不支持IE浏览器，尽量使用Chrome、edge、火狐最新版本浏览器操作</li>
+    </ul>
   </div>
 </template>
 

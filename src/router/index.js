@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redrict: "/e8820v2"
+    redirect: "/e8820v2"
   },
   {
     path: '/e8820v2',
