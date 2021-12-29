@@ -6,12 +6,18 @@
     <div class="item">
       <button @click="calc">生成EEPROM</button>
     </div>
+    <div class="item">
+      提取到的2.4G MAC为:{{mac2g}} ,5G MAC为:{{mac5g}}
+    </div>
     <ol class="item">
       <li>
         点击 选择文件 按钮，选择E8820V2的原版编程器固件上传
       </li>
       <li>
         点击 生成EEPROM 按钮，自动生成并下载eeprom.bin
+      </li>
+      <li>
+        请校验提取的MAC地址是否和路由器自身MAC一致
       </li>
       <li>不支持IE浏览器，尽量使用Chrome、edge、火狐最新版本浏览器操作</li>
     </ol>
@@ -22,10 +28,15 @@
 export default {
   name: "E8820V2",
   components: {},
+  data() {
+    return {
+      mac2g: "",
+      mac5g: "",
+    };
+  },
   methods: {
     calc() {
       let file = this.$refs.upload.files[0];
-      console.log(file);
       if (!file) {
         alert("请上传原版编程器固件!");
         return;
@@ -39,8 +50,8 @@ export default {
         let buffer5gMAC = new Uint8Array(
           fullBuffer.slice(0x20024, 0x20029 + 1)
         );
-        let buffer2g = new Uint8Array(fullBuffer.slice(0x2f000, 0x2f130 + 1));
-        let buffer5g = new Uint8Array(fullBuffer.slice(0x2f800, 0x2f930 + 1));
+        let buffer2g = new Uint8Array(fullBuffer.slice(0x2f000, 0x2f130));
+        let buffer5g = new Uint8Array(fullBuffer.slice(0x2f800, 0x2f930));
         let eepromBuffer = new Uint8Array(64 * 1024).fill(255);
         buffer2g.forEach((data, i) => {
           eepromBuffer[i] = data;
@@ -49,9 +60,11 @@ export default {
           eepromBuffer[0x8000 + i] = data;
         });
         buffer2gMAC.forEach((data, i) => {
+          this.mac2g += Number(data).toString(16).padStart(2, "0");
           eepromBuffer[0xe000 + i] = data;
         });
         buffer5gMAC.forEach((data, i) => {
+          this.mac5g += Number(data).toString(16).padStart(2, "0");
           eepromBuffer[0xe006 + i] = data;
         });
         ["C0", "81", "82", "C3", "04", "45", "46", "07", "08", "09"].forEach(
