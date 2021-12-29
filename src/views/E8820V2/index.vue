@@ -79,7 +79,7 @@ export default {
     saveFile(arrayBuffer) {
       let blob = new Blob([arrayBuffer], { type: "application/octet-stream" });
       let a = document.createElement("a");
-      a.setAttribute("download", "eeprom.bin");
+      a.setAttribute("download", "ZTE-E8820V2-eeprom.bin");
       a.target = "_blank";
       a.href = URL.createObjectURL(blob);
       document.body.appendChild(a);
