@@ -1,12 +1,20 @@
 <template>
   <div class="page">
-    <input type="file" @change="calc" />
-    <ul>
+    <div class="item">
+      <input type="file" ref="upload" name="请上传原版编程器固件" />
+    </div>
+    <div class="item">
+      <button @click="calc">生成EEPROM</button>
+    </div>
+    <ol class="item">
       <li>
-        点击按钮选择E8820V2的编程器文件，会自动生成并下载eeprom.bin
+        点击 选择文件 按钮，选择E8820V2的原版编程器固件上传
+      </li>
+      <li>
+        点击 生成EEPROM 按钮，自动生成并下载eeprom.bin
       </li>
       <li>不支持IE浏览器，尽量使用Chrome、edge、火狐最新版本浏览器操作</li>
-    </ul>
+    </ol>
   </div>
 </template>
 
@@ -15,8 +23,13 @@ export default {
   name: "E8820V2",
   components: {},
   methods: {
-    calc(event) {
-      let file = event.target.files[0];
+    calc() {
+      let file = this.$refs.upload.files[0];
+      console.log(file);
+      if (!file) {
+        alert("请上传原版编程器固件!");
+        return;
+      }
       let fileReader = new FileReader();
       fileReader.onloadend = () => {
         let fullBuffer = fileReader.result;
@@ -63,3 +76,16 @@ export default {
   },
 };
 </script>
+<style lang="css" scoped>
+.page {
+  text-align: left;
+  padding-left: 20px;
+}
+.item {
+  margin-top: 10px;
+}
+li {
+  color: red;
+  font-weight: 600;
+}
+</style>

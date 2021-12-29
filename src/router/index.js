@@ -6,12 +6,21 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: "/e8820v2"
+    redirect: "/zte/e8820v2"
   },
   {
     path: '/e8820v2',
+    redirect: "/zte/e8820v2"
+  },
+  {
+    path: '/zte/e8820v2',
     name: 'E8820V2',
-    component: () => import(/* webpackChunkName: "E8820V2" */ '../views/E8820V2.vue')
+    component: () => import(/* webpackChunkName: "E8820V2" */ '../views/E8820V2/index.vue')
+  },
+  {
+    path: '/zte/e8820s',
+    name: 'E8820S',
+    component: () => import(/* webpackChunkName: "E8820S" */ '../views/E8820S/index.vue')
   }
 ]
 
