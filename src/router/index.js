@@ -5,14 +5,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    redirect: "/index"
-  },
-  {
-    path: '/e8820v2',
-    redirect: "/zte/eeprom/e8820v2"
-  },
-  {
     path: '/index',
     name: 'Index',
     component: () => import(/* webpackChunkName: "Index" */ '../views/Index/index.vue')
@@ -31,7 +23,11 @@ const routes = [
     path: '/tplink/eeprom/wdr7300',
     name: 'WDR7300',
     component: () => import(/* webpackChunkName: "WDR7300" */ '../views/WDR7300/index.vue')
-  }
+  },
+  {
+    path: '*',
+    redirect: "/index"
+  },
 ]
 
 const router = new VueRouter({
