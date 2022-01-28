@@ -5,6 +5,7 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       let option = null
       config.plugin('html').tap(args => {
+        args[0].title = "路由器提取工具";
         option = Object.assign({}, args[0])
         return args
       })
