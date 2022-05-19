@@ -5,7 +5,15 @@
     </div>
     <div class="item">
       请选择Flash类型
-      <label><input type="radio" ref="spi" name="flash" :value="64" checked />spi(64KB)</label>
+      <label>
+        <input
+          type="radio"
+          ref="spi"
+          name="flash"
+          :value="64"
+          checked
+        />spi(64KB)
+      </label>
       <label><input type="radio" name="flash" :value="256" />nand(256KB)</label>
     </div>
     <div class="item">
@@ -15,7 +23,7 @@
       提取到的2.4G MAC为:{{ mac2g }} ,5G MAC为:{{ mac5g }}
     </div>
     <ol class="item">
-      <li>点击 选择文件 按钮，选择{{$options.name}}的原版编程器固件上传</li>
+      <li>点击 选择文件 按钮，选择{{ $options.name }}的原版编程器固件上传</li>
       <li>点击 生成EEPROM 按钮，自动生成并下载eeprom.bin</li>
       <li>请校验提取的MAC地址是否和路由器自身MAC一致</li>
       <li>不支持IE浏览器，尽量使用Chrome、edge、火狐最新版本浏览器操作</li>
@@ -25,7 +33,7 @@
 
 <script>
 export default {
-  name: "E8820V2",
+  name: "E8820S",
   components: {},
   data() {
     return {
