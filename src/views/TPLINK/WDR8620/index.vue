@@ -20,10 +20,6 @@
         请校验提取的MAC地址是否和路由器自身MAC一致
       </li>
       <li>不支持IE浏览器，尽量使用Chrome、edge、火狐最新版本浏览器操作</li>
-      <!-- <li>参考教程: <a target="_blank"
-          href="https://www.right.com.cn/forum/thread-3753329-1-1.html">制作一个MAC2600R（WDR8620)的padavan的eeprom</a><a
-          href="https://www.right.com.cn/forum/thread-4033282-1-1.html">制作一个水星MAC2600R（双7615,4*4）的padavan的eeprom（恢复原厂MAC）</a>
-      </li> -->
       <li>
       blk0:  0x1e000 0x1e3ff => 0x0
       blk1:  0x1f000 0x1f3ff => 0x8000
