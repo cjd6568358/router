@@ -49,6 +49,11 @@ const routes = [
     name: 'Y1',
     component: () => import(/* webpackChunkName: "Y1" */ '../views/NEWIFI/Y1/index.vue')
   },
+    {
+    path: '/s9xxx/acs',
+    name: 'ACS',
+    component: () => import(/* webpackChunkName: "ACS" */ '../views/S9XXX/acs.vue')
+  },
   {
     path: '*',
     redirect: "/index"

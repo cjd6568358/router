@@ -44,15 +44,24 @@
         </li>
       </ul>
     </li>
+    <li class="category" data-title="s9xxx">
+      <ul>
+        <router-link to="/s9xxx/acs" custom v-slot="{ navigate }">
+          <li @click="navigate"><a href="/router/s9xxx/acs">s9xxx_acs</a></li>
+        </router-link>
+      </ul>
+    </li>
   </ul>
 </template>
 <style lang="css" scoped>
 ul {
   text-align: left;
 }
+
 .category {
   position: relative;
 }
+
 .category::before {
   content: attr(data-title);
 }
